@@ -1,0 +1,32 @@
+#docker-compose.yml
+version: "3.0"
+services:
+  migrations:
+    build: .
+    volumes:
+      - .:/migrations
+    depends_on:
+      - db
+    environment:
+      DB_USER: root
+      DB_HOST: db
+      DB_PASSWORD: root
+    restart: always
+    networks:
+      - mb-net
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: minibank
+      POSTGRES_PASSWORD: root
+      PGDATA: /var/lib/postgresql/data/pgdata
+    networks:
+      - mb-net
+networks:
+  mb-net:
+    driver: bridge
