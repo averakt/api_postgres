@@ -13,7 +13,7 @@ services:
       DB_PASSWORD: root
     restart: always
     networks:
-      - mb-net
+      - mb_net
   db:
     image: postgres
     ports:
@@ -26,7 +26,7 @@ services:
       POSTGRES_PASSWORD: root
       PGDATA: /var/lib/postgresql/data/pgdata
     networks:
-      - mb-net
+      - mb_net
 networks:
-  mb-net:
+  mb_net:
     driver: bridge
