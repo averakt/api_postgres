@@ -5,7 +5,7 @@
 Run
 
 ````
-$ docker-compose --compatibility up -d --build
+$ docker-compose --compatibility -p postgres up -d --build
 ````
 
 Использование `--compatibility` чтобы имя приложения docker имело имя с подчеркиваниями. 
